@@ -2,42 +2,29 @@ const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('Country', {
-    tId:{
-      type: DataTypes.UUID,
+  // defino el modelo 2
+  sequelize.define("activity",{
+    Id:{
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      defaultValue: DataTypes.UUIDV4
+      autoIncrement: true
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    flagImage: {
+    difficulty: {
         type: DataTypes.STRING,
         allowNull: false
       },
-    continent: {
+    time: {
         type: DataTypes.STRING,
         allowNull: false
       },
-    capital: {
+    season: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    subregion: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    area: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    population: {
-        type: DataTypes.INTEGER,
         allowNull: false
     }
-  });
+  })
 };
