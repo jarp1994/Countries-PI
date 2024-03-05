@@ -4,40 +4,46 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Country', {
-    tId:{
-      type: DataTypes.UUID,
-      allowNull: false,
+    id:{
+      type: DataTypes.STRING,
       primaryKey: true,
-      autoIncrement: true,
-      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+       //--> alllowNull: false --> no permite que este vacio
     },
-    flagImage: {
+    flag: {
         type: DataTypes.STRING,
-        allowNull: false
+        
+      },
+    coatOfArms: {
+        type: DataTypes.STRING,
       },
     continent: {
         type: DataTypes.STRING,
-        allowNull: false
+        
       },
     capital: {
         type: DataTypes.STRING,
-        allowNull: false
+        
     },
     subregion: {
         type: DataTypes.STRING,
-        allowNull: false
+        
     },
     area: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        
     },
     population: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    }
-  });
-};
+        
+    },
+    maps: {
+      type: DataTypes.STRING,
+      
+    },
+    },
+    { timestamps: false } //---> indicar que no se deben incluir automáticamente las marcas de tiempo createdAt y updatedAt en las filas de la tabla correspondiente
+  )
+}
