@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         allowNull: false
       },
     duration: {
-        type: DataTypes.ENUM("1 hout","2 hours","3 hours","4 hours", " 5 hours"),
+        type: DataTypes.ENUM("1 hour","2 hours","3 hours","4 hours", "5 hours"),
         allowNull: true
       },
     season: {

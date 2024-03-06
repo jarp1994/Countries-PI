@@ -15,7 +15,7 @@ router.get("/countries", getAllCountries);
 
 router.get('/countries/:idPais', getIdCountry )
 
-router.get('/name', getNameCountry)
+router.get('/name', getNameCountry) //--> name?name=Colombia
 
 router.post('/activities', postActivities)
 

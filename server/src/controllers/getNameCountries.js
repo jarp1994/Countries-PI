@@ -3,20 +3,20 @@ const {Country} = require('../db');
 const getNameCountry = async (req,res) => {
     try {
         const {name} = req.query;
-        console.log("nombreeeeeeeeeeeee")
+        // console.log("nombreeeeeeeeeeeee")
         const lowerCaseName= name ? name.toLowerCase() : null;
-        const trimName = lowerCaseName ? lowerCase.trim() : null;
+        const trimName = lowerCaseName ? lowerCaseName.trim() : null;
         const apiName = trimName ? trimName.charAt(0).toUpperCase() + trimName.slice(1): null;
-        console.log("Nombre del país normalizado: ", apiName);
+        // console.log("Nombre del país normalizado: ", apiName);
         let countryByName = null;
         const countryinDb = await Country.findOne({
           where: { name: apiName },
           attributes: [
             "id",
             "name",
-            "image",
+            "flag",
             "coatOfArms",
-            "continents",
+            "continent",
             "capital",
             "subregion",
             "area",
@@ -25,13 +25,13 @@ const getNameCountry = async (req,res) => {
           ],
         });
             if(countryinDb){
-                console.log("entramos al controlador de name");
+                // console.log("entramos al controlador de name");
                 countryByName = {
                     id: countryinDb.id,
                     name: countryinDb.name,
-                    image: countryinDb.image,
+                    flag: countryinDb.image,
                     coatOfArms: countryinDb.coatOfArms,
-                    continents: countryinDb.continents,
+                    continent: countryinDb.continents,
                     capital: countryinDb.capital,
                     subregion: countryinDb.subregion,
                     area: countryinDb.area,
@@ -42,11 +42,11 @@ const getNameCountry = async (req,res) => {
         if(countryByName){
             return res.status(200).json(countryByName)
         } else{
-            console.log("No se encontró el país en la base de datos");
+            // console.log("No se encontró el país en la base de datos");
             return res.status(404).json({message: "No se encontró un pais con ese nombre"})
         }
     } catch (error) {
-        console.error("Error al buscar el país:", error);
+        // console.error("Error al buscar el país:", error);
         return res.status(500).json({ message: "Error al buscar el país" })
     }
 };
