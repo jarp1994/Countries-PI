@@ -1,0 +1,37 @@
+.containerLanding{
+    /* border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 10px 0 10px rgb(240, 228, 228);
+    justify-content: center;
+    text-align:center;
+    font-style: oblique;
+    opacity: 80%; */
+    background-image: url("../../assets/images/Landing.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    
+}
+
+.home{
+    background-color: rgb(185, 38, 45);
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(128, 125, 125, 0.788);
+    width: 10%;
+    height: 5%;
+    padding: 5px;
+    margin: auto;
+    font-style: oblique;
+}
+
+.title{
+    text-align: center;
+    color: rgb(145, 170, 46);
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 70px;
+    padding: 10px;
+    text-shadow: 5px 2px 5px rgb(196, 189, 189);
+}

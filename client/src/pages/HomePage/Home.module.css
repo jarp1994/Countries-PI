@@ -1,0 +1,11 @@
+.containerHome{
+    background-image: url("../../assets/images/Home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.title{
+    color: azure;
+}

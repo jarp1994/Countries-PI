@@ -1,0 +1,7 @@
+.containerDetail{
+    background-image: url("../../assets/images/Detail.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
