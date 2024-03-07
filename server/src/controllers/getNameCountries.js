@@ -2,7 +2,7 @@ const {Country} = require('../db');
 
 const getNameCountry = async (req,res) => {
     try {
-        const {name} = req.query;
+        const name = req.query.name;
         // console.log("nombreeeeeeeeeeeee")
         const lowerCaseName= name ? name.toLowerCase() : null;
         const trimName = lowerCaseName ? lowerCaseName.trim() : null;
