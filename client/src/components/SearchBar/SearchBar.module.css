@@ -1,0 +1,19 @@
+.containerSearch{
+    display: flex;
+    justify-content: center;
+}
+.input{
+    width: 400px;
+    border-radius: 10px;
+    background-color: rgb(237, 245, 191);
+    box-shadow: 10px 10px 20px rgba(12, 9, 9, 0.788);
+}
+
+.search{
+    border-radius:10px;
+    font-style: oblique;
+    width: 80px;
+    color: aliceblue;
+    background-color: rgb(101, 101, 104);
+    box-shadow: 10px 10px 20px rgba(12, 9, 9, 0.788);
+}

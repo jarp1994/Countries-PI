@@ -5,3 +5,46 @@
     background-attachment: fixed;
     height: 100vh;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    width: 430px;
+    height: 600px;
+    margin: auto;
+}
+
+label {
+    margin: 10px 0;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+buttonForm {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007b5e;
+    color: white;
+    cursor: pointer;
+}
+
+buttonForm:hover {
+    background-color: #2a9d8f;
+}
+
+.img{
+    width: 300px;
+    border-radius: 50%;
+}

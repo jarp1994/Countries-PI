@@ -1,8 +1,11 @@
+//importar las actions types:
 
 
 
-// function reducer(){
 
-// }
+//definir el initialState:
+function rootReducer(){
 
-// export default reducer
+}
+
+export default rootReducer

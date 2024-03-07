@@ -1,18 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './NavBar.module.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = () => {
   return (
-    <div>
+    <div className={styles.containerNavBar}>
       <h1>Vacations on your favorite Country</h1>
         <NavLink to="/">
-         <button >Landing</button>
+         <button className={styles.home} >Landing</button>
         </NavLink>
         <NavLink to="/home">
-         <button >Home</button>
+         <button className={styles.home} >Home</button>
         </NavLink>
         <NavLink to="/create">
-         <button >Create</button>
+         <button className={styles.create} >Create</button>
         </NavLink>
         <SearchBar />
     </div>
