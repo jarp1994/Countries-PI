@@ -1,7 +1,11 @@
 import styles from './SearchBar.module.css'
 import React from 'react'
+import { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({searchByName}) => {
+
+const [search, setSearch] = useState('');
+
   return (
     
     <div className={styles.containerSearch} >
@@ -10,9 +14,9 @@ const SearchBar = () => {
           name="search"
           id="search"
           placeholder="Search by name..."
-        //   onChange={}
+          // onChange={(input)=>setSearch(input.target.value)}
             />
-            <button className={styles.search} onClick={()=>alert("buscando cuando le das click")}>Search</button> 
+            <button className={styles.search} onClick={()=>alert("se busco el pais")}>Search</button> 
     </div>
     
   )

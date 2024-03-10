@@ -4,7 +4,11 @@
 
 
 //definir el initialState:
-function rootReducer(){
+let initialState = {
+    allCountries: [],
+    activities: []
+}
+function rootReducer(state=initialState, action){
 
 }
 

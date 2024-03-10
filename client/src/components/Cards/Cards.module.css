@@ -1,0 +1,11 @@
+.containerCards{
+    display: grid;
+    justify-content:space-between;
+    color: rgb(226, 220, 129);
+    font-style: oblique;
+    text-align: center;
+    text-shadow: 10px 2px 2px rgba(32, 29, 29, 0.288) ;
+    grid-template-columns:repeat(4, 1fr);
+    gap : 30px;
+    height: 100vh;
+}

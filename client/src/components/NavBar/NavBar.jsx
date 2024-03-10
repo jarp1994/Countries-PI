@@ -6,7 +6,7 @@ import SearchBar from '../SearchBar/SearchBar';
 const NavBar = () => {
   return (
     <div className={styles.containerNavBar}>
-      <h1>Vacations on your favorite Country</h1>
+      <h1>Countries to visit</h1>
         <NavLink to="/">
          <button className={styles.home} >Landing</button>
         </NavLink>
@@ -16,7 +16,7 @@ const NavBar = () => {
         <NavLink to="/create">
          <button className={styles.create} >Create</button>
         </NavLink>
-        <SearchBar />
+        <SearchBar/>
     </div>
   )
 }
