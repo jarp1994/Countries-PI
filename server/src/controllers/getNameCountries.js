@@ -29,7 +29,7 @@ const getNameCountry = async (req,res) => {
                 countryByName = {
                     id: countryinDb.id,
                     name: countryinDb.name,
-                    flag: countryinDb.image,
+                    flag: countryinDb.flag,
                     coatOfArms: countryinDb.coatOfArms,
                     continent: countryinDb.continents,
                     capital: countryinDb.capital,

@@ -10,6 +10,7 @@ const getIdCountry = async(req, res) => {
             const countryIdDb = await Country.findOne({
               where: { id: id2 },
               include: [{ model: Activity }],
+              
             });
 
 
@@ -17,9 +18,9 @@ const getIdCountry = async(req, res) => {
                 const countryInfo={
                     id: countryIdDb.id,
                     name: countryIdDb.name,
-                    image: countryIdDb.image,
+                    flag: countryIdDb.flag,
                     coatOfArms: countryIdDb.coatOfArms,
-                    continents: countryIdDb.continents,
+                    continent: countryIdDb.continent,
                     capital: countryIdDb.capital,
                     subregion: countryIdDb.subregion,
                     area: countryIdDb.area,
