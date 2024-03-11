@@ -9,3 +9,17 @@
 .title{
     color: azure;
 }
+
+.cardContainerSearch{
+    width: 700px;
+
+}
+
+.searchCard{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}

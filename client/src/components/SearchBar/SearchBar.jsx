@@ -2,9 +2,9 @@ import styles from './SearchBar.module.css'
 import React from 'react'
 import { useState } from 'react';
 
-const SearchBar = ({searchByName}) => {
+const SearchBar = ({handleSearch}) => {
 
-const [search, setSearch] = useState('');
+const [countryName, setCountryName] = useState('');
 
   return (
     
@@ -14,9 +14,9 @@ const [search, setSearch] = useState('');
           name="search"
           id="search"
           placeholder="Search by name..."
-          // onChange={(input)=>setSearch(input.target.value)}
+          onChange= {(e)=>{setCountryName(e.target.value)}}
             />
-            <button className={styles.search} onClick={()=>alert("se busco el pais")}>Search</button> 
+            <button className={styles.search} onClick={()=>{handleSearch(countryName)}}>Search</button> 
     </div>
     
   )

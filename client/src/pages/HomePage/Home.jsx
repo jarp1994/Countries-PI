@@ -22,26 +22,31 @@ const Home = () => {
   // trae los countries al home
   useEffect(() => {
     getCountries()
-  })
+  }, []);
 
   //busca el pais por name usando elsearchbar
-
-  const [searchCountry, setSearchCountry] = useState({})
+ const [country, setCountry] = useState(null);
   const getCountryByName = (name)=>{
       axios.get(`http://localhost:3001/name?name=${name}`)
            .then((response)=>{
-               setSearchCountry(response.data)
+               setCountry(response.data)
                console.log(response.data)
            })
-           .catch((error)=>alert("Couldnt find country"))
+           .catch((error)=>{
+              getCountries()
+              setCountry(null)
+          })
   }
 
 
   return (
     <div className={styles.containerHome}>
-      {location.pathname !== "/" && <NavBar searchByName={getCountryByName}/>}
+      {location.pathname !== "/" && <NavBar handleSearch={getCountryByName} />}
       <Filters></Filters>
-      <Cards countries={countries} />
+      {country ?  <div className={styles.searchCard}>
+                    <div className={styles.cardContainerSearch} ><Card country={country}/>
+                    </div>
+                  </div> : <Cards countries={countries} />}
     </div>
   )
 }

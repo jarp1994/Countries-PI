@@ -5,9 +5,7 @@ import React from "react";
 const Cards = ({countries}) => {
   return (
     <div className={styles.containerCards}>
-      {countries && countries.map((country) => (
-        <Card key={country.id} country={country} />
-      ))}
+      {countries.map((country) => (<Card key={country.id} country={country} />))}
     </div>
   )
 }
