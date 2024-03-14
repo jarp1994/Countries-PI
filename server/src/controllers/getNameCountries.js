@@ -31,7 +31,7 @@ const getNameCountry = async (req,res) => {
                     name: countryinDb.name,
                     flag: countryinDb.flag,
                     coatOfArms: countryinDb.coatOfArms,
-                    continent: countryinDb.continents,
+                    continent: countryinDb.continent,
                     capital: countryinDb.capital,
                     subregion: countryinDb.subregion,
                     area: countryinDb.area,
