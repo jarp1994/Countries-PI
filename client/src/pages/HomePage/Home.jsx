@@ -6,10 +6,23 @@ import Cards from '../../components/Cards/Cards';
 import Filters from '../../components/Filters/Filters';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Home = () => {
-  //creamos el estado para guardar los countries y no se borren cuando llame mas countries
-  const [countries, setCountries] = useState([]);
+
+//creamos el estado para guardar los countries y no se borren cuando llame mas countries
+const [countries, setCountries] = useState([]);
+
+const [currentPage, setCurrentPage] = useState(1);
+const [countriesPerPage, setCountriesPerPage] = useState(10);
+const indexOfLastCountry = currentPage * countriesPerPage;
+const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
+
+
+
+
+  
   const getCountries = () =>{
     axios.get("http://localhost:3001/countries")
           .then(res => {
@@ -30,7 +43,6 @@ const Home = () => {
       axios.get(`http://localhost:3001/name?name=${name}`)
            .then((response)=>{
                setCountry(response.data)
-               console.log(response.data)
            })
            .catch((error)=>{
               getCountries()
@@ -38,15 +50,24 @@ const Home = () => {
           })
   }
 
+// pagination
+  const paginate = (pageNumber) => {setCurrentPage(pageNumber)};
+
 
   return (
+    
     <div className={styles.containerHome}>
       {location.pathname !== "/" && <NavBar handleSearch={getCountryByName} />}
       <Filters></Filters>
+      <Pagination
+      countriesPerPage={countriesPerPage}
+      countries={countries.length}
+      paginate={paginate}
+      />
       {country ?  <div className={styles.searchCard}>
                     <div className={styles.cardContainerSearch} ><Card country={country}/>
                     </div>
-                  </div> : <Cards countries={countries} />}
+                  </div> : <Cards countries={currentCountries} />}
     </div>
   )
 }

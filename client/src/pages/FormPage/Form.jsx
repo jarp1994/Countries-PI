@@ -3,6 +3,8 @@ import styles from './Form.module.css'
 import NavBar from '../../components/NavBar/NavBar';
 
 const Form = () => {
+
+
   return (
     <div className={styles.containerForm} >
             {location.pathname !== "/" && <NavBar/>}
