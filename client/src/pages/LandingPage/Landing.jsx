@@ -5,7 +5,7 @@ import styles from './Landing.module.css'
 const Landing = () => {
   return (
     <div className={styles.containerLanding}>
-      <h1 className={styles.title} > Welcome to your Country Vacations</h1>
+      <h1 className={styles.title} > Welcome to your Vacations Journey</h1>
             <NavLink to="/home">
                 <button className={styles.home}>Home</button>
             </NavLink>

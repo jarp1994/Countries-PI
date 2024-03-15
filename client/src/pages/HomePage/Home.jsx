@@ -13,6 +13,8 @@ const Home = () => {
 //creamos el estado para guardar los countries y no se borren cuando llame mas countries
 const [countries, setCountries] = useState([]);
 
+
+//pagination
 const [currentPage, setCurrentPage] = useState(1);
 const [countriesPerPage, setCountriesPerPage] = useState(10);
 const indexOfLastCountry = currentPage * countriesPerPage;
