@@ -43,6 +43,9 @@ const Detail = () => {
         {country.population && (<p>Population: {country.population}</p>)}
         {country.coatOfArms && (<img className={styles.img} src={country.coatOfArms} alt={country.name} />)}
       </div>
+      <div>
+        {country.activities && (<p>Activities: {country.activities.map((activity) => activity.name + ", ")}</p>)}
+      </div>
     </div>
   )
 }

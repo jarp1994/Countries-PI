@@ -2,13 +2,14 @@ import React from 'react'
 import styles from './Filters.module.css'
 const Filters = () => {
 
+  
 
   return (
     <div>
       <form className={styles.forms1} action="">
-        <label htmlFor="filter">Country:</label>
+        <label htmlFor="filter">Continents:</label>
         <select name="filter" id="filter">
-          <option value="Api"> Countries list</option>
+          <option value="Api"> Continents</option>
         </select>
       </form>
       <form className={styles.forms1} action="">

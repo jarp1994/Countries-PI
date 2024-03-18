@@ -61,15 +61,21 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
     <div className={styles.containerHome}>
       {location.pathname !== "/" && <NavBar handleSearch={getCountryByName} />}
       <Filters></Filters>
-      <Pagination
-      countriesPerPage={countriesPerPage}
-      countries={countries.length}
-      paginate={paginate}
-      />
       {country ?  <div className={styles.searchCard}>
                     <div className={styles.cardContainerSearch} ><Card country={country}/>
                     </div>
-                  </div> : <Cards countries={currentCountries} />}
+                  </div> : 
+                  <div>
+                    <Pagination
+                    countriesPerPage={countriesPerPage}
+                    countries={countries.length}
+                    paginate={paginate}
+                    />
+                    <Cards countries={currentCountries} />
+                  </div>
+                  }
+                  
+                  
     </div>
   )
 }

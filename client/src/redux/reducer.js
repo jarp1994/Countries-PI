@@ -7,7 +7,6 @@
 let initialState = {
     allCountries: [],
     activities: [],
-    currentPage: 0,
 }
 function rootReducer(state=initialState, action){
     switch (action.type){
