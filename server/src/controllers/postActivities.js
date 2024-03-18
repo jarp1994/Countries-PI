@@ -5,7 +5,6 @@ const postActivities = async (req, res) => {
     try {
         // traje las actividades del modelo
        const { name, difficulty, duration, season, countries } = req.body;
-
        if(!name || !difficulty || !duration || !season || !countries || countries.length === 0){
         return res.status(400).send({error: "Faltan datos, por favor ingresa todos los campos"})
        }
@@ -15,15 +14,15 @@ const postActivities = async (req, res) => {
             duration,
             season
         })
-        const countryDb = await Country.findAll({
+        const countriesInDb = await Country.findAll({
             where: {
-                name: countries.map(country => country.toLowerCase().trim().charAt(0).toUpperCase() + country.slice(1))
+                id: countries
             }
         })
-        if(countryDb.length !== countries.length){
-            return res.status(400).send({error: "Uno de los paises no existe en la base de datos"})
+        //add activity to each country
+        for(const country of countriesInDb){
+            await country.addActivity(activity)
         }
-        await activity.addCountry(country)
         res.status(200).send({message:"se creo la actividad con exito"})
         
     } catch (error) {
