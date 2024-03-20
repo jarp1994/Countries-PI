@@ -43,8 +43,12 @@ const Detail = () => {
         {country.population && (<p>Population: {country.population}</p>)}
         {country.coatOfArms && (<img className={styles.img} src={country.coatOfArms} alt={country.name} />)}
       </div>
-      <div>
-        {country.activities && (<p>Activities: {country.activities.map((activity) => activity.name + ", ")}</p>)}
+      <div className={styles.activities}>
+        {country.activities && (<p>Activities: 
+          {country.activities.map((activity) => activity.name + ", ")}
+          {country.activities.map((activity) => "dificultad:" + activity.difficulty + ", ")}
+          {country.activities.map((activity) => "duracion:" + activity.duration + ", ")}
+          {country.activities.map((activity) => activity.season)}</p>)}
       </div>
     </div>
   )

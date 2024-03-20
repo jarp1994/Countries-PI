@@ -39,6 +39,7 @@ const Form = () => {
     )
   }
 
+  // crear la actividad y guardarla en la base de datos
 
   const [countries, setCountries] = useState([]);
   const getCountries = () => {

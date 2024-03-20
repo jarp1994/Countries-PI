@@ -4,10 +4,11 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 
-//sin dev tools
+
  const store = createStore(
     rootReducer, 
-    composeWithDevTools(applyMiddleware(thunk)))
+    composeWithDevTools(applyMiddleware(thunk)
+    ))
 
 
     export default store

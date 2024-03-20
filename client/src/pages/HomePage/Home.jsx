@@ -7,11 +7,13 @@ import Filters from '../../components/Filters/Filters';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Pagination from '../../components/Pagination/Pagination';
+import { filterByContinent, getAllCountries, orderByName, filterByPopulation, filterByActivity } from '../../redux/actions'
+import { useDispatch, useSelector, } from 'react-redux'
 
 const Home = () => {
 
-//creamos el estado para guardar los countries y no se borren cuando llame mas countries
-const [countries, setCountries] = useState([]);
+const dispatch = useDispatch();
+let countries = useSelector((state)=> state.countries)
 
 
 //pagination
@@ -23,20 +25,9 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
 
 
 
-
-  
-  const getCountries = () =>{
-    axios.get("http://localhost:3001/countries")
-          .then(res => {
-            setCountries(res.data)
-          })
-          .catch(err => console.log("No se traen los paises"))
-
-  }
-
-  // trae los countries al home
+  // trae los countries al home desde la action
   useEffect(() => {
-    getCountries()
+    dispatch(getAllCountries());
   }, []);
 
   //busca el pais por name usando elsearchbar
@@ -47,7 +38,6 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
                setCountry(response.data)
            })
            .catch((error)=>{
-              getCountries()
               setCountry(null)
           })
   }
@@ -55,12 +45,41 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
 // pagination
   const paginate = (pageNumber) => {setCurrentPage(pageNumber)};
 
+  const filterContinent = (continent) => {
+    dispatch(filterByContinent(continent));
+    setCurrentPage(1);
+  }
+
+  const orderName = (order) => {
+    dispatch(orderByName(order));
+    setCurrentPage(1);
+    
+  }
+
+  const orderPopulation = (order) => {
+    dispatch(filterByPopulation(order));
+    setCurrentPage(1);
+    
+  }
+
+  const orderActivity = (order) => {
+    dispatch(filterByActivity(order));
+    setCurrentPage(1);
+    
+  }
+
+
 
   return (
     
     <div className={styles.containerHome}>
       {location.pathname !== "/" && <NavBar handleSearch={getCountryByName} />}
-      <Filters></Filters>
+      <Filters 
+      filterByContinent={filterContinent}
+      filterByActivity={orderActivity}
+      orderByName={orderName}
+      filterByPopulation={orderPopulation}
+      ></Filters>
       {country ?  <div className={styles.searchCard}>
                     <div className={styles.cardContainerSearch} ><Card country={country}/>
                     </div>
