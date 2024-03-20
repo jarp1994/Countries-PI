@@ -35,15 +35,6 @@ useEffect(() => {
         </select>
       </form>
       <form className={styles.forms1} action="">
-        <label htmlFor="filter">Activity:</label>
-        <select onChange={(e) => filterByActivity(e.target.value)} name="filter" id="filter">
-        <option value="">Tourist Acitivities</option>
-        {activities.map((activity) => (
-          <option key={activity.id} value={activity.name}>{activity.name}</option>
-        ))}
-        </select>
-      </form>
-      <form className={styles.forms1} action="">
         <label htmlFor="order">Order:</label>
         <select onChange={(e) => orderByName(e.target.value)} name="order" id="order">
         <option value="">Order by Name</option>
@@ -57,6 +48,15 @@ useEffect(() => {
         <option value="">Order by Population</option>
         <option value="Ascendente">Ascendente</option>
         <option value="Descendente">Descendente</option>
+        </select>
+      </form>
+      <form className={styles.forms1} action="">
+        <label htmlFor="filter">Activity:</label>
+        <select onChange={(e) => filterByActivity(e.target.value)} name="filter" id="filter">
+        <option value="">Tourist Acitivities</option>
+        {activities.map((activity) => (
+          <option key={activity.id} value={activity.name}>{activity.name}</option>
+        ))}
         </select>
       </form>
     </div>

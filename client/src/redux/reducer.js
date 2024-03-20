@@ -1,13 +1,11 @@
-//importar las actions:
-
-
 
 
 //definir el initialState:
 let initialState = {
     allCountries: [],
     countries: [],
-    filterCountries: [],
+    filterAllFilters: [],
+    activities: [],
 }
 function rootReducer(state=initialState, action){
     switch (action.type){
@@ -17,33 +15,48 @@ function rootReducer(state=initialState, action){
                 ...state,
                 allCountries: action.payload,
                 countries: action.payload,
-                filterCountries: action.payload
+                filterCo: action.payload
             }
         
-        case "FILTER_BY_CONTINENT":
+        case "GET_ACTIVITIES":
+            return {
+                ...state,
+                activities: action.payload
+            }
+        
+            case "FILTER_BY_ACTIVITY":
+                
+        
+        let info
+        const filterActivity = state.activities.filter((activity) => {
+
+          if (activity.name === action.payload) {
+            info= activity.Countries.map(country => ({
+                id: country.cca3,
+                name: country.name,
+                flag: country.flag,
+                continent: country.continent,
+                population: country.population,
+                capital: country.capital,
+                coatOfArms: country.coatOfArms
+          }));
+
+        return info
+        }})
+
+          return {
+            ...state,
+            countries: info,
+
+          };
+
+            case "FILTER_BY_CONTINENT":
             const filteredContinents = state.allCountries.filter(country => country.continent === action.payload)
             return {
                 ...state,
                 countries: filteredContinents
             }
 
-        case "FILTER_BY_ACTIVITY":
-            let info
-        const filterActivity = state.activities.filter((activity) => {
-          
-          if (activity.name === action.payload) {
-            info= activity.Countries.map(country => ({
-                id: country.id,
-                name: country.name,
-                image: country.image,
-                continents: country.continents,            
-          }));    
-            return info
-        }})   
-          return {
-            ...state,
-            countries: info,
-          };
          
         case "ORDER_BY_NAME":
             const sortedCountries = [...state.allCountries]

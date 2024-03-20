@@ -7,7 +7,7 @@ import Filters from '../../components/Filters/Filters';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 import Pagination from '../../components/Pagination/Pagination';
-import { filterByContinent, getAllCountries, orderByName, filterByPopulation, filterByActivity } from '../../redux/actions'
+import { filterByContinent, getAllCountries, orderByName, filterByPopulation, filterByActivity, getActivities } from '../../redux/actions'
 import { useDispatch, useSelector, } from 'react-redux'
 
 const Home = () => {
@@ -29,6 +29,10 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
   useEffect(() => {
     dispatch(getAllCountries());
   }, []);
+
+  useEffect(() => {
+    dispatch(getActivities())
+  },[])
 
   //busca el pais por name usando elsearchbar
  const [country, setCountry] = useState(null);

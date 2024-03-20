@@ -16,6 +16,21 @@ export function getAllCountries(){
     }
 }
 
+//traer activities
+export function getActivities(){
+    return async (dispatch)=>{
+        try {
+            const response = await axios.get("http://localhost:3001/activities")
+            dispatch({
+                type: "GET_ACTIVITIES",
+                payload: response.data,
+            })
+            
+        } catch (error) {
+            console.error("Error getActivities: ", error);            
+        }
+    }
+}
 
 
 //action para filtro por continente
@@ -32,11 +47,14 @@ export function filterByContinent(payload){
 
 
 export function filterByActivity(payload){
+    console.log(payload)
     return {
         type: "FILTER_BY_ACTIVITY",
         payload
     }
 }
+
+
 
 
 
