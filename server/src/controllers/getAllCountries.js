@@ -1,10 +1,13 @@
 const axios = require('axios');
 const {Country} = require('../db');
+const {Activity} = require('../db');
 
 // trae toda los paises que necesito primero busca en la db y si no en la api
 const getAllCountries = async (req,res) => {
     try {
-        const countriesInDb = await Country.findAll();
+        const countriesInDb = await Country.findAll({
+            include: [{ model: Activity }],
+        });
         if (countriesInDb.length > 0) {
             res.status(200).json(countriesInDb);
             // console.log("entramos en la base de datos")
@@ -24,8 +27,8 @@ const getAllCountries = async (req,res) => {
                 subregion: country.subregion,
                 area: country.area,
                 population: country.population,
-                maps: country.maps.googleMaps
-            
+                maps: country.maps.googleMaps,
+                activities: [],
             }));
             // console.log("entramos a la api")
             const createinDb = Country.bulkCreate(countries)//--> se mandan los datos a la base de datos desde la api
