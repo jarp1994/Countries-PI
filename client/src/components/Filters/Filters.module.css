@@ -13,3 +13,20 @@
     box-shadow: 10px 10px 20px rgba(29, 28, 28, 0.788);
     font-style: oblique;
 }
+
+.reset{
+    display:inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #857c7c;
+    height: fit-content;
+    opacity: 90%;
+    box-shadow: 10px 10px 20px rgba(29, 28, 28, 0.788);
+    font-style: oblique;
+    font-size: 18px;
+}

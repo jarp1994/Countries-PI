@@ -72,7 +72,9 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
     
   }
 
-
+const resetCountries = () => {
+  dispatch(getAllCountries());
+}
 
   return (
     
@@ -83,6 +85,7 @@ const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry
       filterByActivity={orderActivity}
       orderByName={orderName}
       filterByPopulation={orderPopulation}
+      resetCountries={resetCountries}
       ></Filters>
       {country ?  <div className={styles.searchCard}>
                     <div className={styles.cardContainerSearch} ><Card country={country}/>

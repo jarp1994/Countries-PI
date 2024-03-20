@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 
-const Filters = ({filterByContinent, filterByActivity, orderByName, filterByPopulation}) => {
+const Filters = ({filterByContinent, filterByActivity, orderByName, filterByPopulation,resetCountries}) => {
 
   const [activities, setActivities] = useState([]);
 
@@ -59,6 +59,8 @@ useEffect(() => {
         ))}
         </select>
       </form>
+      <br></br>
+      <button className={styles.reset} onClick={() => resetCountries()}>Reset</button>
     </div>
   )
 }
