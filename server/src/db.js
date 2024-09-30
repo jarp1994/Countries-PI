@@ -7,10 +7,13 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
+const sequelize = new Sequelize('countries', DB_USER, DB_PASSWORD, {
+  host: DB_HOST,
+  dialect: 'mysql',
   logging: false, 
   native: false, 
 });
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -20,7 +23,6 @@ fs.readdirSync(path.join(__dirname, '/models'))
   .forEach((file) => {
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
-
 
 modelDefiners.forEach(model => model(sequelize));
 
@@ -34,10 +36,19 @@ const { Country, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Country.belongsToMany(Activity,  {through: "country_activity"});
-Activity.belongsToMany(Country, {through: "country_activity"});
+Country.belongsToMany(Activity, { through: "country_activity" });
+Activity.belongsToMany(Country, { through: "country_activity" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+
+// Verifica la conexión
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conexión a MySQL establecida con éxito.');
+  })
+  .catch(err => {
+    console.error('No se pudo conectar a MySQL:', err);
+  });
